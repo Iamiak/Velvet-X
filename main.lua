@@ -7085,4 +7085,16 @@ Toggle:OnChanged(function(value)
     end
 end)
 
+local BackgroundDropdown = Tabs.Setting
+:AddDropdown("Background", {
+    Title = "Background",
+    Values = BackgroundOptions,
+    Default = BackgroundOptions[1], -- Set default to the first option
+})
 
+-- Callback function to handle changes in the background dropdown
+BackgroundDropdown:OnChanged(function(Value)
+    -- Implement logic to change the background based on the selected option
+    print("Selected background:", Value)
+    -- Example: ChangeBackground(Value)
+end)
