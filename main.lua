@@ -7090,7 +7090,7 @@ local Colorpicker = Tabs.Main:AddColorpicker("Colorpicker", {
 
 
 
-    local TColorpicker = Tabs.Main:AddColorpicker("TransparencyColorpicker", {
+    local TColorpicker = Tabs.Settings:AddColorpicker("TransparencyColorpicker", {
         Title = "Colorpicker",
         Description = "but you can change the transparency.",
         Transparency = 0,
@@ -7104,7 +7104,7 @@ local Colorpicker = Tabs.Main:AddColorpicker("Colorpicker", {
         )
     end)
 
-Tabs.Main:AddButton({
+Tabs.Settings:AddButton({
         Title = "Auto hop server when admin joins",
         Description = "",
         Callback = function()
