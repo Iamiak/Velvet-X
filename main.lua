@@ -6611,52 +6611,6 @@ Tabs.Misc:AddButton({
     Left.Size = UDim2.new(.5, 0, 1, 0)
     tvk.Parent = Left
 
-Tabs.Visual:AddButton({
-        Title = "Visual levels",
-        Description = "",
-        Callback = function()
-local plr = game:GetService("Players").LocalPlayer
-local Notification = require(game:GetService("ReplicatedStorage").Notification)
-local Data = plr:WaitForChild("Data")
-local EXPFunction = require(game.ReplicatedStorage:WaitForChild("EXPFunction"))
-local LevelUp = require(game:GetService("ReplicatedStorage").Effect.Container.LevelUp)
-local Sound = require(game:GetService("ReplicatedStorage").Util.Sound)
-local LevelUpSound = game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp_Proxy") or game:GetService("ReplicatedStorage").Util.Sound.Storage.Other:FindFirstChild("LevelUp")
-function v129(p15)
-    local v130 = p15;
-    while true do
-        local v131, v132 = string.gsub(v130, "^(-?%d+)(%d%d%d)", "%1,%2");
-        v130 = v131;
-        if v132 == 0 then
-            break;
-        end;    
-    end;
-    return v130;
-end;
-
-Notification.new("<Color=Yellow>QUEST COMPLETED!<Color=/>"):Display()
-Notification.new("Earned <Color=Yellow>1,000,000,000,000 Exp.<Color=/> (+ None)"):Display()
-Notification.new("Earned <Color=Green>$25,000<Color=/>"):Display()
-plr.Data.Exp.Value = 999999999999
-plr.Data.Beli.Value = plr.Data.Beli.Value + 25000
-
-delay = 0
-count = 0
-while plr.Data.Exp.Value - EXPFunction(Data.Level.Value) > 0 do
-    plr.Data.Exp.Value = plr.Data.Exp.Value - EXPFunction(Data.Level.Value)
-    plr.Data.Level.Value = plr.Data.Level.Value + 1
-    plr.Data.Points.Value = plr.Data.Points.Value + 3
-    LevelUp({ plr })
-    Sound.Play(Sound, LevelUpSound.Value)
-    Notification.new("<Color=Green>LEVEL UP!<Color=/> (" .. plr.Data.Level.Value .. ")"):Display()
-    count = count + 1
-    if count >= 5 then
-        delay = tick()
-        count = 0
-        wait(2)
-    end
-end
-
     local Right = Instance.new("Frame", game.Players.LocalPlayer.PlayerGui.BubbleChat)
     Right.BackgroundTransparency = 1
     Right.Size = UDim2.new(.5, 0, 1, 0)
@@ -7077,54 +7031,58 @@ SliderPosZ:OnChanged(function(Value)
 end)
 SliderPosZ:SetValue(0)
 
-local Colorpicker = Tabs.Main:AddColorpicker("Colorpicker", {
-        Title = "Colorpicker",
-        Default = Color3.fromRGB(96, 205, 255)
-    })
-
-    Colorpicker:OnChanged(function()
-        print("Colorpicker changed:", Colorpicker.Value)
-    end)
-    
-    Colorpicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
-
-
-
-    local TColorpicker = Tabs.Settings:AddColorpicker("TransparencyColorpicker", {
-        Title = "Colorpicker",
-        Description = "but you can change the transparency.",
-        Transparency = 0,
-        Default = Color3.fromRGB(96, 205, 255)
-    })
-
-    TColorpicker:OnChanged(function()
-        print(
-            "TColorpicker changed:", TColorpicker.Value,
-            "Transparency:", TColorpicker.Transparency
-        )
-    end)
-
-Tabs.Settings:AddButton({
-        Title = "Auto hop server when admin joins",
+Tabs.Visual:AddButton({
+        Title = "Visual levels",
         Description = "",
         Callback = function()
-      local Players = game:GetService("Players")
-local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua"))()
-
-local function checkPlayer(player)
-    local whitelist = {
-        "gamer_robot.fan",
-        "makiplayzz",
-        "Zioles",
-        "mygame43"
-    }
-    
-    for _, name in ipairs(whitelist) do
-        if player.Name == name then
-            module:Teleport(game.PlaceId)
-            break
+            Window:Dialog({
+                Title = "Are you sure? ",
+                Content = "This is unstoppable and laggy",
+                Buttons = {
+                    {
+                        Title = "Confirm",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/MaxSlow"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled the dialog.")
+                        end
+                    }
+                }
+            })
         end
-    end
-end
+    })
+local Toggle = Tabs.Setting:AddToggle("Leaveserveradmincall", {Title = "Leave server when admin joins", Default = true })
 
-Players.PlayerAdded:Connect(checkPlayer)
+Toggle:OnChanged(function(value)
+    if value then
+        local Players = game:GetService("Players")
+
+        local function kickPlayer(player)
+            player:Kick("You have been automatically kicked from the game.")
+        end
+
+        local playersToKick = {
+            "Mygame43",
+            "Rip_indra",
+            "Zioles",
+            "Uzoth",
+            "Gamerrobot",
+            "Flamey"
+        }
+
+        Players.PlayerAdded:Connect(function(player)
+            for _, username in ipairs(playersToKick) do
+                if player.Name == username then
+                    kickPlayer(player)
+                    break
+                end
+            end
+        end)
+    end
+end)
+
+
