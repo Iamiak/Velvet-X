@@ -3,24 +3,24 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({
     Title = "VELVETX",
-    SubTitle = "By Iami_ak and NepXSorvinger",
+    SubTitle = "By CosmicX team",
     TabWidth = 160,
     Size = UDim2.fromOffset(530, 350),
     Acrylic = true,
-    Theme = "Dark",
+    Theme = "Aqua",
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
     Stats = Window:AddTab({ Title = "Stats", Icon = "bar-chart-2" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "circle-user" }),
-    Teleport = Window:AddTab({ Title = "Island", Icon = "tree-palm" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "users-round" }),
+    Teleport = Window:AddTab({ Title = "Island", Icon = "tent-tree" }),
     Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" }),
     Raid = Window:AddTab({ Title = "Raid", Icon = "swords" }),
-    Race = Window:AddTab({ Title = "Race V4", Icon = "" }),
+    Race = Window:AddTab({ Title = "Race V4", Icon = "ribbon" }),
     Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-bag" }),
-  Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
-    Hop = Window:AddTab({ Title = "Hop", Icon = "" }),
+  Misc = Window:AddTab({ Title = "Misc", Icon = "brick-wall" }),
+    Hop = Window:AddTab({ Title = "Hop", Icon = "plane" }),
     Setting = Window:AddTab({ Title = "Setting", Icon = "settings" }),
     Visual = Window:AddTab({ Title = "Visual", Icon = "eye" }),
 }
