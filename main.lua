@@ -11,18 +11,18 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
-    Player = Window:AddTab({ Title = "Player", Icon = "" }),
-    Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
-    Fruit = Window:AddTab({ Title = "Fruit", Icon = "" }),
-    Raid = Window:AddTab({ Title = "Raid", Icon = "" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "bar-chart-2" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "circle-user" }),
+    Teleport = Window:AddTab({ Title = "Island", Icon = "tree-palm" }),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" }),
+    Raid = Window:AddTab({ Title = "Raid", Icon = "swords" }),
     Race = Window:AddTab({ Title = "Race V4", Icon = "" }),
-    Shop = Window:AddTab({ Title = "Shop", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-bag" }),
   Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
     Hop = Window:AddTab({ Title = "Hop", Icon = "" }),
-    Setting = Window:AddTab({ Title = "Setting", Icon = "" }),
-    Visual = Window:AddTab({ Title = "Visual", Icon = "" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "settings" }),
+    Visual = Window:AddTab({ Title = "Visual", Icon = "eye" }),
 }
 local Options = Fluent.Options
 do
